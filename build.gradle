@@ -1,0 +1,30 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'org.gregorgk'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'com.opencsv:opencsv:5.5.2'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'commons-io:commons-io:2.6'
+
+    testImplementation 'ch.qos.logback:logback-core:1.2.3'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.3'
+    testImplementation 'org.slf4j:slf4j-api:1.7.30'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
