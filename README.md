@@ -8,11 +8,16 @@
 6. A price may refer to a bid, an ask as well as both bid and ask (can be confusing but exactly as stated in the requirements).
 7. Whitespaces from the input feed are not preserved in the output when commissions are applied.
 8. The instrument could be an enum with values: EUR/USD, GBP/USD and
-   EUR/JPY.
+   EUR/JPY. 
+9. `uniqueId` cannot be `null` (will not be parsed as `null` from the messages anyway).
 ### Comments:
 1. The subscriber listed in requirements is implemented in `MessageListener`. 
 2. Commission logic is in `CommissionProcessor` (`ProcessorService` interface).
 3. `LatestMarketData` can serve as a REST endpoint later on. Please note that `LatestMarketData` itself does not contain any commission logic.
+### Improvements:
+1. `SingleLineMessage` type is not needed and can be removed. `MarketDataEntry` would be sufficient.
+2. Wrapping the return types of `fromSingleLine*` method(s) into `Optional`.
+3. The `onMessage` method in `MessageListener` can be shortened. No need for additional variables.
 ### Execution
 To run tests execute:
         ```
